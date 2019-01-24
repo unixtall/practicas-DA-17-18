@@ -1,0 +1,21 @@
+\begin{lstlisting}
+/*PARA LA EXTRACTORA*/
+	cellValueExtractora(cell, nCellsWidth,fil,col);
+	while(currentCell != listCells.end() && flag == false) {
+		selectCell(cell,nCellsWidth,(*currentCell));
+		if(factible(mapWidth,mapHeight,obstacles,defenses,(*currentExtraction),(*currentCell),defensesPutted)) {
+
+		    flag = true;
+		    (*currentExtraction)->position.x = (*currentCell).position.x;
+		    (*currentExtraction)->position.y = (*currentCell).position.y;
+		    (*currentExtraction)->position.z = 0;
+		   	fil = (*currentCell).id / nCellsWidth;
+		   	col = (*currentCell).id % nCellsWidth;
+		    defensesPutted.push_front(*currentExtraction);
+
+
+		}
+
+		++currentCell;
+	}
+\end{lstlisting}

@@ -1,0 +1,44 @@
+\begin{lstlisting}
+//INICIO ALGORITMO DE FUSION
+void fusion(std::vector<Cell>& v, int i, int k, int j) {
+     int n=j-i+1, p=i , q=k+1;
+
+    std::vector<Cell> vectorAux;
+
+    for(int a=0; a<n; a++) {
+        if(p<=k && (q>j || v[p].value > v[q].value)) {
+            vectorAux.push_back(v[p]);
+            p++;
+        }
+        else{
+            vectorAux.push_back(v[q]);
+            q++;
+        }
+    }
+
+    for(int a=0; a<n; a++)
+        v[i+a] = vectorAux[a];
+}
+
+void ordenacion_fusion(std::vector<Cell>& v, int i, int j) {
+    int n = j-i+1;
+
+    if(n <= 2) {
+        if(v[i].value < v[j].value) {
+            Cell vectorAux = v[j];
+            v[j] = v[i];
+            v[i] = vectorAux; 
+        }
+    
+    }
+    else{
+
+        int k = i-1 + n/2;
+        ordenacion_fusion(v, i, k);
+        ordenacion_fusion(v, k+1, j);
+        fusion(v, i, k, j);
+    }
+}
+//FIN ALGORITMO FUSION
+
+\end{lstlisting}

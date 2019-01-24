@@ -1,0 +1,33 @@
+Lo que hago en la función de factibilidad es comprobar 3 casos. Primer caso: que se salga del mapa. Segundo caso: que choque con una defensa ya puesta. Y tercer caso: Que no choque con un obstaculo
+
+\begin{lstlisting}
+bool factible(float mapWidth,float mapHeight, std::list<Object*> obstacles, std::list<Defense*> defenses,
+                Defense* defensa,Cell currentCell, List<Defense*> defensesPutted) {
+	List<Defense*>::iterator currentDefense = defensesPutted.begin();
+	List<Object*>::iterator currentObstacles = obstacles.begin();
+	//Comprobamos que no se salga del mapa
+	if((currentCell.position.x - defensa->radio) < 0 || (currentCell.position.x + defensa->radio  >= mapWidth)||(currentCell.position.y - defensa->radio) < 0 || (currentCell.position.y + defensa->radio ) >= mapHeight)
+				return false;
+
+	while(currentDefense != defensesPutted.end()){
+
+		if(defensa->id != (*currentDefense)->id){
+
+			if(_distance((*currentDefense)->position, currentCell.position) <= (*currentDefense)->radio + defensa->radio) //Comprobamos con las defensas
+
+				return false;
+
+		currentDefense++;
+		}
+	}
+
+ while(currentObstacles != obstacles.end()){
+		if(_distance((*currentObstacles)->position, currentCell.position) <= (*currentObstacles)->radio + defensa->radio) //Comprobamos con los obstaculos
+			return false;
+		currentObstacles++;
+	}
+
+	return true;
+	
+}
+\end{lstlisting}

@@ -1,0 +1,20 @@
+\begin{lstlisting}
+/*PARA LAS DEFENSAS*/
+	cellValueDefenses(cell, nCellsWidth,fil,col);
+List<Defense*>::iterator currentDefense = ++defenses.begin();
+	currentCell = listCells.begin();
+    while(currentDefense != defenses.end() && currentCell != listCells.end()) {
+    	selectCell(cell,nCellsWidth,(*currentCell));
+		if(factible(mapWidth,mapHeight,obstacles,defenses,(*currentDefense),(*currentCell),defensesPutted)) {
+		    (*currentDefense)->position.x = (*currentCell).position.x;
+		    (*currentDefense)->position.y = (*currentCell).position.y;
+		    (*currentDefense)->position.z = 0;
+		    defensesPutted.push_back(*currentDefense);
+			++currentDefense;
+
+		}
+
+		++currentCell;
+
+    }
+\end{lstlisting}

@@ -1,0 +1,12 @@
+He seguido el algoritmo A*.
+Tenemos dos vectores donde se van a guardar los nodos que esten abiertos(estará aqui hasta que no recorramos) o cerrados(cuando pasemos por él),
+y inicializamos la celda inicial con los valores de G, H, F y el nodo padre que
+será nulo e incluyéndolo en la lista de nodos abiertos.
+Para la solución de la heuristica he usado la distancia euclídea.
+nodos de la lista de nodos abiertos. El algoritmo sacará el nodo con menor coste y compararía si ese nodo es
+el nodo destino, si es destino ya tendríamos solución y finalizaría, y encaso contrario miraríamos
+lista de nodos adyacentes y calcularía sus valores(F, G, H, nodo padre). Estos nodos pasarían a la lista de
+nodos abiertos. En el caso de que un nodo ya esté en la lista, se calcularía el coste del camino por el actual y
+se compararía con el que tenía. Si es mayor no hace nada y si es menor se actualiza.
+Una vez encontremos una solución correcta, o nos quedemos sin poder encontrarla procederemos a recuperar
+el camino.

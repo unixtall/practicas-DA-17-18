@@ -1,0 +1,24 @@
+\begin{lstlisting}
+//INICIO FUNCION OK ORDENADO
+bool ok(std::vector<Cell> v) {
+    bool res = true;
+    
+    for(int i = 0; i < v.size(); ++i)
+        if(v[i].value < v[i+1].value) 
+        	res = false;
+    
+    return res;
+}
+//FIN FUNCION OK ORDENADO
+//INICIO CAJA NEGRA
+void blackBox(std::vector<Cell> v){
+	ordenacion_fusion(v,0,v.size()-1);
+	if(ok(v))
+		std::cout << "Ordenacion por fusion ok!" << std::endl;
+				
+	ordenacion_rapida(v,0,v.size()-1);
+	if(ok(v))
+		std::cout << "Ordenacion rapida ok!" << std::endl;
+}//FIN CAJA NEGRA
+\end{lstlisting}
+

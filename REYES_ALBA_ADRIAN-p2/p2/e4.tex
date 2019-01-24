@@ -1,0 +1,19 @@
+\begin{lstlisting}
+	int i = defenses.size() - 1;
+	unsigned int j = ases-1;
+    std::list<Defense*>::iterator it = --defenses.end() ;
+   
+    while(i > 0 && j > 0) {
+
+        if(matriz[i][j] != matriz[i-1][j]) {
+            selectedIDs.push_back((*it)->id);
+            j -= (*it)->cost;
+            i--;
+            it--; 
+        }else{
+            i--;
+            it--;
+        }
+      
+    }    
+\end{lstlisting}
